@@ -7,7 +7,7 @@ import getRandomInt from './utils';
 export default class Character implements Fighter {
   _race: Race;
   _archetype: Archetype;
-  _maxLifePoinst: number;
+  _maxLifePoints: number;
   _lifePoints: number;
   _strength: number;
   _defense: number;
@@ -18,8 +18,8 @@ export default class Character implements Fighter {
     this._dexterity = getRandomInt(1, 10);
     this._race = new Elf(name, this._dexterity);
     this._archetype = new Mage(name);
-    this._maxLifePoinst = this._race.maxLifePoints / 2;
-    this._lifePoints = this._maxLifePoinst;
+    this._maxLifePoints = this._race.maxLifePoints / 2;
+    this._lifePoints = this._maxLifePoints;
     this._strength = getRandomInt(1, 10);
     this._defense = getRandomInt(1, 10);
     this._energy = {
@@ -40,15 +40,15 @@ export default class Character implements Fighter {
   }
 
   levelUp(): void {
-    this._maxLifePoinst += getRandomInt(1, 10);
-    if (this._maxLifePoinst > this._race.maxLifePoints) {
-      this._maxLifePoinst = this._race.maxLifePoints;
+    this._maxLifePoints += getRandomInt(1, 10);
+    if (this._maxLifePoints > this._race.maxLifePoints) {
+      this._maxLifePoints = this._race.maxLifePoints;
     }
     this._strength += getRandomInt(1, 10);
     this._dexterity += getRandomInt(1, 10);
     this._defense += getRandomInt(1, 10);
     this._energy.amount = 10;
-    this._lifePoints = this._maxLifePoinst;
+    this._lifePoints = this._maxLifePoints;
   }
 
   get lifePoints(): number {
@@ -76,7 +76,7 @@ export default class Character implements Fighter {
   }
 
   get maxLifePoinst(): number {
-    return this._maxLifePoinst;
+    return this._maxLifePoints;
   }
 
   get dexterity(): number {
